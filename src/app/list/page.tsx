@@ -1,6 +1,7 @@
-import Filter from "@/components/Filter"
-import ProductList from "@/components/ProductList"
-import Image from "next/image"
+import Filter from "@/components/Filter";
+import ProductList from "@/components/ProductList";
+import Image from "next/image";
+import { wixClientServer } from "@/lib/wixClientServer";
 
 const ListPage = () => {
     return (
@@ -25,4 +26,4 @@ const ListPage = () => {
     )
   }
   
-  export default ListPage
+  export default ListPage;

@@ -1,7 +1,24 @@
-import Image from "next/image"
-import Link from "next/link"
+import { wixClientServer } from "@/lib/wixClientServer";
+import { products } from "@wix/stores";
+import Image from "next/image";
+import Link from "next/link";
 
-const ProductList = () => {
+
+const PRODUCT_PER_PAGE = 8;
+
+const ProductList = async ({
+    categoryId, 
+    limit,
+}:{
+    categoryId: string;
+     limit? : number;
+    }) => {
+
+        
+    const wixClient = await wixClientServer();
+
+    const res =  wixClient.products.queryProducts().limit(limit || PRODUCT_PER_PAGE).find();
+
     return (
         <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
             <Link href="/test" className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]">
@@ -109,4 +126,4 @@ const ProductList = () => {
     )
 }
 
-export default ProductList
+export default ProductList;
